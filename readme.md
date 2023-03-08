@@ -4,7 +4,7 @@
 
 让处理表单返回值变得更容易！
 
-需要已编译好的版本？去看看 [Releases](https://github.com/lgc2333/LLSEPlugins/releases) 吧！
+需要已编译好的版本？去看看 [Releases](https://github.com/lgc-LLSEDev/FormAPIEx/releases) 吧！
 
 ## 介绍
 
@@ -16,7 +16,9 @@
 
 ## 示例
 
-见 [example.js](https://github.com/lgc2333/LLSEPlugins/blob/main/FormAPIEx/example.js)
+见 [example.js](https://github.com/lgc-LLSEDev/FormAPIEx/blob/main/FormAPIEx/example.js)
+
+<!--
 
 ## 编译
 
@@ -50,6 +52,8 @@
    ```
 
    之后编译好的文件会输出到 `lib` 文件夹
+
+-->
 
 ## 引用
 
