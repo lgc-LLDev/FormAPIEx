@@ -1,0 +1,24 @@
+{
+  "format_version": 1,
+  "tooth": "github.com/lgc-LLSEDev/FormAPIEx",
+  "version": "0.2.2",
+  "dependencies": {},
+  "information": {
+    "name": "FormAPIEx",
+    "description": "让处理表单返回值变得更容易！",
+    "author": "student_2333 <lgc2333@126.com>",
+    "license": "Apache-2.0",
+    "homepage": "https://github.com/lgc-LLSEDev/FormAPIEx"
+  },
+  "placement": [
+    {
+      "source": "lib/FormAPIEx.js",
+      "destination": "plugins/lib/FormAPIEx.js"
+    },
+    {
+      "source": "lib/FormAPIEx.d.ts",
+      "destination": "plugins/lib/FormAPIEx.d.ts"
+    }
+  ],
+  "possession": []
+}
