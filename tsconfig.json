@@ -1,0 +1,10 @@
+{
+  "extends": "../tsconfig.template.json",
+  "exclude": ["./lib/**", "./example.js"],
+  "compilerOptions": {
+    "outDir": "./lib",
+    "rootDir": ".",
+    "resolveJsonModule": true,
+    "declaration": true
+  }
+}
