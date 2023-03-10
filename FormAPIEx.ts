@@ -1,5 +1,5 @@
 // LiteLoaderScript Dev Helper
-/// <reference path="d:\Coding\bds\LLSEAids/dts/llaids/src/index.d.ts"/>
+/// <reference path="../HelperLib/src/index.d.ts"/>
 
 export const NAME = 'FormAPIEx';
 export const VERSION = [0, 2, 2] as const;
