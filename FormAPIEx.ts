@@ -37,7 +37,6 @@ export function sendFormAsync(
   form: SimpleForm | CustomForm
 ): Promise<number | (string | boolean | number)[] | null | undefined> {
   return new Promise((resolve) => {
-    // @ts-expect-error 这里的错误是误报
     player.sendForm(form, (_, data) => setTimeout(() => resolve(data), 0));
   });
 }
