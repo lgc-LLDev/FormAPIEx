@@ -189,8 +189,7 @@ export class SimpleFormEx<T> {
       if (resultIndex === offset) {
         const res = await this.sendSearchForm(player);
         if (res === false || res === null) {
-          // eslint-disable-next-line no-return-await
-          return await this.sendAsync(player, page);
+          return this.sendAsync(player, page);
         }
         return res;
       }
@@ -204,23 +203,20 @@ export class SimpleFormEx<T> {
             default: page,
           })
           .sendAsync(player);
-        // eslint-disable-next-line no-return-await
-        return await this.sendAsync(player, res ? res.num : page);
+        return this.sendAsync(player, res ? res.num : page);
       }
       offset += 1;
     }
 
     if (hasPreviousPage) {
       if (resultIndex === offset) {
-        // eslint-disable-next-line no-return-await
-        return await this.sendAsync(player, page - 1);
+        return this.sendAsync(player, page - 1);
       }
       offset += 1;
     }
 
     if (hasNextPage && resultIndex + 1 === formattedButtons.length) {
-      // eslint-disable-next-line no-return-await
-      return await this.sendAsync(player, page + 1);
+      return this.sendAsync(player, page + 1);
     }
 
     const realIndex = resultIndex - offset;
