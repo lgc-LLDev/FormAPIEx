@@ -18,7 +18,7 @@
     "watch": "rollup -c --watch"
   },
   "files": [
-    "lib/**"
+    "lib/FormAPIEx.*"
   ],
   "repository": {
     "type": "git",
