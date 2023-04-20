@@ -2,9 +2,33 @@
 /// <reference path="../HelperLib/src/index.d.ts"/>
 
 export const NAME = 'FormAPIEx';
-export const VERSION = [0, 2, 2] as const;
+export const VERSION = [0, 2, 3] as const;
 export const AUTHOR = 'student_2333 <lgc2333@126.com>';
 export const LICENSE = 'Apache-2.0';
+
+/**
+ * 格式化错误堆栈
+ * @param e 错误对象
+ * @returns 格式化后的错误
+ */
+export function formatError(e: unknown): string {
+  let msg = e;
+  if (e instanceof Error) msg = e.stack || e.message;
+  return String(msg);
+}
+
+/**
+ * 给 async function 套一层 sync function，解决 LLSE 回调调用 async 函数会出现的玄学 bug
+ * @param func async function
+ * @returns wrapped sync function
+ */
+export function callAsyncLogErr<T extends unknown[]>(
+  func: (...args: T) => Promise<unknown>
+): (...args: T) => void {
+  return (...args: T) => {
+    setTimeout(() => func(...args).catch((e) => logger.error(formatError(e))), 0);
+  };
+}
 
 export function sendModalFormAsync(
   player: Player,
