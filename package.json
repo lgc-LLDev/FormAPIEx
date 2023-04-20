@@ -1,8 +1,9 @@
 {
   "name": "form-api-ex",
-  "version": "0.2.2",
+  "version": "0.3.0",
   "description": "Work with LLSE forms easily!",
   "main": "lib/FormAPIEx.js",
+  "types": "lib/FormAPIEx.d.ts",
   "license": "Apache-2.0",
   "author": "student_2333 <lgc2333@126.com>",
   "keywords": [
@@ -13,8 +14,8 @@
     "ll"
   ],
   "scripts": {
-    "build": "tsc",
-    "watch": "tsc --watch"
+    "build": "rollup -c",
+    "watch": "rollup -c --watch"
   },
   "files": [
     "lib/**"
@@ -26,5 +27,13 @@
   "bugs": {
     "url": "https://github.com/lgc2333/LLSEPlugins/issues"
   },
-  "homepage": "https://github.com/lgc2333/LLSEPlugins/FormAPIEx"
+  "homepage": "https://github.com/lgc2333/LLSEPlugins/FormAPIEx",
+  "devDependencies": {
+    "@rollup/plugin-json": "^6.0.0",
+    "@rollup/plugin-typescript": "^11.1.0",
+    "rollup": "^3.20.6",
+    "rollup-plugin-dts": "^5.3.0",
+    "tslib": "^2.5.0",
+    "typescript": "^5.0.4"
+  }
 }

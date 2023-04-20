@@ -1,29 +1,15 @@
 // LiteLoaderScript Dev Helper
-/// <reference path="d:\Coding\bds\LLSEAids/dts/llaids/src/index.d.ts"/>
-/* global ll mc logger PermType File */
+/// <reference path="../HelperLib/src/index.d.ts"/>
+/* global ll mc PermType File */
 
 const {
   CustomFormEx,
   SimpleFormEx,
   sendModalFormAsync,
+  wrapAsyncFunc,
 } = require('./lib/FormAPIEx');
 
 const PLUGIN_NAME = 'FormAPIExExample';
-
-/**
- * 功能性函数，用 setTimeout 调用异步函数，以免出现玄学问题
- * @template {unknown[]} T
- * @param {(...args: T) => Promise<unknown>} func
- * @returns {(...args: T) => void}
- */
-function wrapAsyncFunc(func) {
-  return (...args) => {
-    setTimeout(
-      () => func(...args).catch((e) => logger.error(`${e}\n${e.stack ?? ''}`)),
-      0
-    );
-  };
-}
 
 // 异步发送确认取消表单
 const cmdTestModalForm = mc.newCommand('testmodal', PLUGIN_NAME, PermType.Any);

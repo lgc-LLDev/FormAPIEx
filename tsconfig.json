@@ -5,6 +5,7 @@
     "outDir": "./lib",
     "rootDir": ".",
     "resolveJsonModule": true,
-    "declaration": true
+    "declaration": true,
+    "removeComments": false
   }
 }
