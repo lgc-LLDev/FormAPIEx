@@ -14,7 +14,7 @@
     "ll"
   ],
   "scripts": {
-    "build": "rollup -c",
+    "build": "rollup -c && rimraf ./lib/src",
     "watch": "rollup -c --watch"
   },
   "files": [
@@ -34,6 +34,7 @@
     "rollup": "^3.20.6",
     "rollup-plugin-dts": "^5.3.0",
     "tslib": "^2.5.0",
-    "typescript": "^5.0.4"
+    "typescript": "^5.3.3",
+    "rimraf": "^5.0.5"
   }
 }

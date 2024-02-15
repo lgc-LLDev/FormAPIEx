@@ -1,24 +1,20 @@
 {
-  "format_version": 1,
-  "tooth": "github.com/lgc-LLSEDev/FormAPIEx",
+  "$schema": "https://raw.githubusercontent.com/lippkg/lip/main/schemas/tooth.v2.schema.json",
+  "format_version": 2,
+  "tooth": "github.com/lgc-LLDev/FormAPIEx",
   "version": "0.3.1",
-  "dependencies": {},
-  "information": {
+  "info": {
     "name": "FormAPIEx",
-    "description": "让处理表单返回值变得更容易！",
-    "author": "lgc2333",
-    "license": "Apache-2.0",
-    "homepage": "https://github.com/lgc-LLSEDev/FormAPIEx"
+    "description": "Work with LSE forms easily!",
+    "author": "student_2333",
+    "tags": ["library", "lse", "quickjs", "form"]
   },
-  "placement": [
-    {
-      "source": "lib/FormAPIEx.js",
-      "destination": "plugins/lib/FormAPIEx.js"
-    },
-    {
-      "source": "lib/FormAPIEx.d.ts",
-      "destination": "plugins/lib/FormAPIEx.d.ts"
-    }
-  ],
-  "possession": []
+  "files": {
+    "place": [
+      {
+        "src": "lib/*",
+        "dest": "plugins/lib/"
+      }
+    ]
+  }
 }
