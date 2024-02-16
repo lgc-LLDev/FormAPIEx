@@ -16,6 +16,8 @@ export class SimpleFormOperational<R> {
 
   async sendAsync(player: Player): Promise<R | FormClose> {
     const form = new SimpleFormEx(this.buttons);
+    form.title = this.title;
+    form.content = this.content;
     form.formatter = ({ text, image }) => [text, image];
     const res = await form.sendAsync(player);
     if (res === FormClose) return FormClose;

@@ -124,6 +124,10 @@ QQ：3076823485
 
 ## 更新日志
 
+### 0.5.1
+
+- 修复 `SimpleFormOperational` 的 `title` 与 `content` 不生效的 Bug
+
 ### 0.5.0
 
 - 使用 `FormClose` 表示玩家手动关闭表单或表单发送失败
