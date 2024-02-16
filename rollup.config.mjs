@@ -6,8 +6,17 @@ export default [
   {
     input: 'src/index.ts',
     output: {
-      file: 'lib/FormAPIEx.js',
+      file: 'lib/FormAPIEx.cjs',
       format: 'cjs',
+      inlineDynamicImports: true,
+    },
+    plugins: [json(), typescript()],
+  },
+  {
+    input: 'src/index.ts',
+    output: {
+      file: 'lib/FormAPIEx.mjs',
+      format: 'esm',
       inlineDynamicImports: true,
     },
     plugins: [json(), typescript()],

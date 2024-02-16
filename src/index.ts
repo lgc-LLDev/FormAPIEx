@@ -6,4 +6,5 @@ export * from './custom-ex';
 export * from './modal';
 export * from './simple-async';
 export * from './simple-ex';
+export * from './simple-operational';
 export * from './util';

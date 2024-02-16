@@ -16,7 +16,7 @@
 
 ## 示例
 
-见 [example.js](https://github.com/lgc-LLSEDev/FormAPIEx/blob/master/example.js)
+见 [FormAPIExample.js](https://github.com/lgc-LLSEDev/FormAPIEx/blob/master/FormAPIExample.js)
 
 ## 引用
 
@@ -83,6 +83,10 @@ QQ：3076823485
   </details>
 
 ## 更新日志
+
+### 0.4.0
+
+- 新增 `SimpleFormOperational` 类
 
 ### 0.3.1
 

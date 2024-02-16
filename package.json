@@ -1,8 +1,9 @@
 {
   "name": "form-api-ex",
-  "version": "0.3.1",
+  "version": "0.4.0",
   "description": "Work with LLSE forms easily!",
-  "main": "lib/FormAPIEx.js",
+  "main": "lib/FormAPIEx.cjs",
+  "module": "lib/FormAPIEx.mjs",
   "types": "lib/FormAPIEx.d.ts",
   "license": "Apache-2.0",
   "author": "student_2333 <lgc2333@126.com>",

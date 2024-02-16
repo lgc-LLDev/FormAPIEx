@@ -1,13 +1,14 @@
 // LiteLoaderScript Dev Helper
 /// <reference path="../HelperLib/src/index.d.ts"/>
-/* global ll mc PermType File */
+/* global ll mc PermType file */
 
 const {
   CustomFormEx,
   SimpleFormEx,
+  SimpleFormOperational,
   sendModalFormAsync,
   wrapAsyncFunc,
-} = require('./lib/FormAPIEx');
+} = require('./FormAPIEx');
 
 const PLUGIN_NAME = 'FormAPIExExample';
 
@@ -103,7 +104,7 @@ mc.listen('onServerStarted', () => {
 
     wrapAsyncFunc(async () => {
       /** @type {string[]} */
-      const buttons = File.getFilesList('./behavior_packs/vanilla/recipes');
+      const buttons = file.getFilesList('./behavior_packs/vanilla/recipes');
       const form = new SimpleFormEx(buttons);
       form.title = PLUGIN_NAME;
       form.canTurnPage = true;
@@ -128,16 +129,16 @@ mc.listen('onServerStarted', () => {
     if (!player) return false;
 
     wrapAsyncFunc(async () => {
-      const form = new SimpleFormEx([
-        ['点我输出1', () => player.tell('1')],
-        ['点我输出2', () => player.tell('2')],
-        ['点我输出114514', () => player.tell('114514')],
-      ]);
-      form.title = PLUGIN_NAME;
-      form.content = '§a请选择要执行的操作：';
-      form.formatter = ([title]) => [`§3${title}`];
-      const result = await form.sendAsync(player); // 返回值和上面同理
-      if (result) result[1]();
+      const form = new SimpleFormOperational(
+        PLUGIN_NAME,
+        '§a请选择要执行的操作：',
+        [
+          { text: '点我输出 1', operation: () => player.tell('1') },
+          { text: '点我输出 2', operation: () => player.tell('2') },
+          { text: '点我输出 114514', operation: () => player.tell('114514') },
+        ]
+      );
+      await form.sendAsync(player); // 返回值是执行后函数的返回值
     })();
 
     return true;

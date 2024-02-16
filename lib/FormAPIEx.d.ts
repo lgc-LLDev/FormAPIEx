@@ -360,6 +360,19 @@ declare class SimpleFormEx<T> {
     sendAsync(player: Player, page?: number): Promise<T | null>;
 }
 
+interface SimpleFormOperationalButton<R> {
+    text: string;
+    image?: string;
+    operation: () => R;
+}
+declare class SimpleFormOperational<R> {
+    title: string;
+    content: string;
+    buttons: SimpleFormOperationalButton<R>[];
+    constructor(title?: string, content?: string, buttons?: SimpleFormOperationalButton<R>[]);
+    sendAsync(player: Player): Promise<R | null>;
+}
+
 /**
  * 格式化错误堆栈
  * @param e 错误对象
@@ -387,4 +400,4 @@ declare function deepClone<T>(obj: T): T;
 declare function sendFormAsync(player: Player, form: SimpleForm): Promise<number | null | undefined>;
 declare function sendFormAsync(player: Player, form: CustomForm): Promise<(string | boolean | number)[] | null | undefined>;
 
-export { AUTHOR, CustomFormDropdownObject, CustomFormEx, CustomFormInputObject, CustomFormInputOptions, CustomFormLabelObject, CustomFormObject, CustomFormObjectReturnType, CustomFormReturn, CustomFormSliderObject, CustomFormSliderOptions, CustomFormStepSliderObject, CustomFormSwitchObject, LICENSE, NAME, SimpleFormAsync, SimpleFormAsyncOptions, SimpleFormEx, VERSION, buildCustomForm, deepClone, formatError, sendFormAsync, sendModalFormAsync, wrapAsyncFunc };
+export { AUTHOR, CustomFormDropdownObject, CustomFormEx, CustomFormInputObject, CustomFormInputOptions, CustomFormLabelObject, CustomFormObject, CustomFormObjectReturnType, CustomFormReturn, CustomFormSliderObject, CustomFormSliderOptions, CustomFormStepSliderObject, CustomFormSwitchObject, LICENSE, NAME, SimpleFormAsync, SimpleFormAsyncOptions, SimpleFormEx, SimpleFormOperational, SimpleFormOperationalButton, VERSION, buildCustomForm, deepClone, formatError, sendFormAsync, sendModalFormAsync, wrapAsyncFunc };
