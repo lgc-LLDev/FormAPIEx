@@ -3,6 +3,8 @@ declare const NAME = "FormAPIEx";
 declare const VERSION: [number, number, number];
 declare const AUTHOR = "student_2333 <lgc2333@126.com>";
 declare const LICENSE = "Apache-2.0";
+declare const FormClose: unique symbol;
+type FormClose = typeof FormClose;
 
 interface CustomFormLabelObject {
     type: 'label';
@@ -225,9 +227,9 @@ declare class CustomFormEx<T extends {
     /**
      * 异步向玩家发送该表单
      * @param player 玩家对象
-     * @returns 返回结果，玩家关闭表单或发送失败返回 null
+     * @returns 返回结果，玩家关闭表单或发送失败返回 FormClose
      */
-    sendAsync(player: Player): Promise<CustomFormReturn<T> | null>;
+    sendAsync(player: Player): Promise<CustomFormReturn<T> | FormClose>;
 }
 
 /**
@@ -237,9 +239,9 @@ declare class CustomFormEx<T extends {
  * @param content 表单内容
  * @param confirmButton 确认按钮标题
  * @param cancelButton 取消按钮标题
- * @returns 玩家选择的按钮，发送失败返回 null
+ * @returns 玩家选择的按钮
  */
-declare function sendModalFormAsync(player: Player, title: string, content: string, confirmButton?: string, cancelButton?: string): Promise<boolean | null | undefined>;
+declare function sendModalFormAsync(player: Player, title: string, content: string, confirmButton?: string, cancelButton?: string): Promise<boolean>;
 
 interface SimpleFormAsyncOptions {
     /** 表单标题 */
@@ -282,9 +284,9 @@ declare class SimpleFormAsync {
     /**
      * 异步向玩家发送该表单
      * @param player 玩家对象
-     * @returns 玩家选择的按钮序号，玩家关闭表单或发送失败返回 null 或 undefined
+     * @returns 玩家选择的按钮序号，玩家关闭表单或发送失败返回 FormClose
      */
-    sendAsync(player: Player): Promise<number | null | undefined>;
+    sendAsync(player: Player): Promise<number | FormClose>;
 }
 
 declare class SimpleFormEx<T> {
@@ -348,16 +350,16 @@ declare class SimpleFormEx<T> {
      * 异步向玩家发送搜索表单
      * @param player 玩家对象
      * @param defaultVal 搜索框默认内容
-     * @returns 选择的搜索结果按钮参数。返回 null 为没搜到, false 为取消搜索
+     * @returns 选择的搜索结果按钮参数。返回 null 为没搜到, FormClose 为取消搜索
      */
-    sendSearchForm(player: Player, defaultVal?: string): Promise<T | null | false>;
+    sendSearchForm(player: Player, defaultVal?: string): Promise<T | null | FormClose>;
     /**
      * 异步向玩家发送表单
      * @param player 玩家对象
      * @param page 页码
-     * @returns 给定的按钮参数，表单被玩家关闭或发送失败返回 null
+     * @returns 给定的按钮参数，表单被玩家关闭或发送失败返回 FormClose
      */
-    sendAsync(player: Player, page?: number): Promise<T | null>;
+    sendAsync(player: Player, page?: number): Promise<T | FormClose>;
 }
 
 interface SimpleFormOperationalButton<R> {
@@ -370,7 +372,7 @@ declare class SimpleFormOperational<R> {
     content: string;
     buttons: SimpleFormOperationalButton<R>[];
     constructor(title?: string, content?: string, buttons?: SimpleFormOperationalButton<R>[]);
-    sendAsync(player: Player): Promise<R | null>;
+    sendAsync(player: Player): Promise<R | FormClose>;
 }
 
 /**
@@ -397,7 +399,7 @@ declare function deepClone<T>(obj: T): T;
  * @param form 表单对象
  * @returns 返回结果
  */
-declare function sendFormAsync(player: Player, form: SimpleForm): Promise<number | null | undefined>;
-declare function sendFormAsync(player: Player, form: CustomForm): Promise<(string | boolean | number)[] | null | undefined>;
+declare function sendFormAsync(player: Player, form: SimpleForm): Promise<number | FormClose>;
+declare function sendFormAsync(player: Player, form: CustomForm): Promise<(string | boolean | number)[] | FormClose>;
 
-export { AUTHOR, CustomFormDropdownObject, CustomFormEx, CustomFormInputObject, CustomFormInputOptions, CustomFormLabelObject, CustomFormObject, CustomFormObjectReturnType, CustomFormReturn, CustomFormSliderObject, CustomFormSliderOptions, CustomFormStepSliderObject, CustomFormSwitchObject, LICENSE, NAME, SimpleFormAsync, SimpleFormAsyncOptions, SimpleFormEx, SimpleFormOperational, SimpleFormOperationalButton, VERSION, buildCustomForm, deepClone, formatError, sendFormAsync, sendModalFormAsync, wrapAsyncFunc };
+export { AUTHOR, CustomFormDropdownObject, CustomFormEx, CustomFormInputObject, CustomFormInputOptions, CustomFormLabelObject, CustomFormObject, CustomFormObjectReturnType, CustomFormReturn, CustomFormSliderObject, CustomFormSliderOptions, CustomFormStepSliderObject, CustomFormSwitchObject, FormClose, LICENSE, NAME, SimpleFormAsync, SimpleFormAsyncOptions, SimpleFormEx, SimpleFormOperational, SimpleFormOperationalButton, VERSION, buildCustomForm, deepClone, formatError, sendFormAsync, sendModalFormAsync, wrapAsyncFunc };

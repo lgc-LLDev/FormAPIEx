@@ -5,7 +5,7 @@
  * @param content 表单内容
  * @param confirmButton 确认按钮标题
  * @param cancelButton 取消按钮标题
- * @returns 玩家选择的按钮，发送失败返回 null
+ * @returns 玩家选择的按钮
  */
 export function sendModalFormAsync(
   player: Player,
@@ -13,14 +13,15 @@ export function sendModalFormAsync(
   content: string,
   confirmButton = '§a确认',
   cancelButton = '§c取消'
-): Promise<boolean | null | undefined> {
+): Promise<boolean> {
+  // 不知道怎么回事按取消会返回 null / undefined，干脆直接转 boolean
   return new Promise((resolve) => {
     player.sendModalForm(
       title,
       content,
       confirmButton,
       cancelButton,
-      (_, data) => setTimeout(() => resolve(data), 0)
+      (_, data) => setTimeout(() => resolve(!!data), 0)
     );
   });
 }

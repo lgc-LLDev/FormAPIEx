@@ -1,3 +1,4 @@
+import { FormClose } from './const';
 import { deepClone, sendFormAsync } from './util';
 
 export interface CustomFormLabelObject {
@@ -438,9 +439,9 @@ export class CustomFormEx<T extends { [id: string]: CustomFormObject } = {}> {
   /**
    * 异步向玩家发送该表单
    * @param player 玩家对象
-   * @returns 返回结果，玩家关闭表单或发送失败返回 null
+   * @returns 返回结果，玩家关闭表单或发送失败返回 FormClose
    */
-  async sendAsync(player: Player): Promise<CustomFormReturn<T> | null> {
+  async sendAsync(player: Player): Promise<CustomFormReturn<T> | FormClose> {
     const data = await sendFormAsync(
       player,
       buildCustomForm(
@@ -448,7 +449,7 @@ export class CustomFormEx<T extends { [id: string]: CustomFormObject } = {}> {
         this.objects.map((v) => v[1])
       )
     );
-    if (data === null || data === undefined) return null;
+    if (data === FormClose) return FormClose;
     return this.parseReturn(data);
   }
 }

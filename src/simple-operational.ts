@@ -1,3 +1,4 @@
+import { FormClose } from './const';
 import { SimpleFormEx } from './simple-ex';
 
 export interface SimpleFormOperationalButton<R> {
@@ -13,11 +14,11 @@ export class SimpleFormOperational<R> {
     public buttons: SimpleFormOperationalButton<R>[] = []
   ) {}
 
-  async sendAsync(player: Player): Promise<R | null> {
+  async sendAsync(player: Player): Promise<R | FormClose> {
     const form = new SimpleFormEx(this.buttons);
     form.formatter = ({ text, image }) => [text, image];
     const res = await form.sendAsync(player);
-    if (!res) return res;
+    if (res === FormClose) return FormClose;
     return res.operation();
   }
 }

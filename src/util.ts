@@ -1,3 +1,5 @@
+import { FormClose } from './const';
+
 /**
  * 格式化错误堆栈
  * @param e 错误对象
@@ -43,16 +45,21 @@ export function deepClone<T>(obj: T): T {
 export function sendFormAsync(
   player: Player,
   form: SimpleForm
-): Promise<number | null | undefined>;
+): Promise<number | FormClose>;
 export function sendFormAsync(
   player: Player,
   form: CustomForm
-): Promise<(string | boolean | number)[] | null | undefined>;
+): Promise<(string | boolean | number)[] | FormClose>;
 export function sendFormAsync(
   player: Player,
   form: SimpleForm | CustomForm
-): Promise<number | (string | boolean | number)[] | null | undefined> {
+): Promise<number | (string | boolean | number)[] | FormClose> {
   return new Promise((resolve) => {
-    player.sendForm(form, (_, data) => setTimeout(() => resolve(data), 0));
+    player.sendForm(form, (_, data) =>
+      setTimeout(
+        () => resolve(data === null || data === undefined ? FormClose : data),
+        0
+      )
+    );
   });
 }

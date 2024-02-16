@@ -1,3 +1,4 @@
+import { FormClose } from './const';
 import { CustomFormEx } from './custom-ex';
 import { SimpleFormAsync } from './simple-async';
 
@@ -110,17 +111,17 @@ export class SimpleFormEx<T> {
    * 异步向玩家发送搜索表单
    * @param player 玩家对象
    * @param defaultVal 搜索框默认内容
-   * @returns 选择的搜索结果按钮参数。返回 null 为没搜到, false 为取消搜索
+   * @returns 选择的搜索结果按钮参数。返回 null 为没搜到, FormClose 为取消搜索
    */
   async sendSearchForm(
     player: Player,
     defaultVal = ''
-  ): Promise<T | null | false> {
+  ): Promise<T | null | FormClose> {
     const form = new CustomFormEx(this.title);
     const res = await form
       .addInput('param', '请输入你要搜索的内容', { default: defaultVal })
       .sendAsync(player);
-    if (!res) return false;
+    if (res === FormClose) return FormClose;
 
     const searched = this.searcher(this.buttons, res.param);
     if (!searched.length) {
@@ -142,16 +143,16 @@ export class SimpleFormEx<T> {
     searchForm.hasSearchButton = false;
     const selected = await searchForm.sendAsync(player);
 
-    return selected === null ? false : selected;
+    return selected === FormClose ? FormClose : selected;
   }
 
   /**
    * 异步向玩家发送表单
    * @param player 玩家对象
    * @param page 页码
-   * @returns 给定的按钮参数，表单被玩家关闭或发送失败返回 null
+   * @returns 给定的按钮参数，表单被玩家关闭或发送失败返回 FormClose
    */
-  async sendAsync(player: Player, page = 1): Promise<T | null> {
+  async sendAsync(player: Player, page = 1): Promise<T | FormClose> {
     const buttons = this.canTurnPage ? this.getPage(page) : this.buttons;
     const formattedButtons = this.formatButtons(buttons);
 
@@ -185,16 +186,15 @@ export class SimpleFormEx<T> {
       content: formatContent(this.content),
       buttons: formattedButtons,
     }).sendAsync(player);
-    if (resultIndex === null || resultIndex === undefined) return null;
+    if (resultIndex === FormClose) return FormClose;
 
     let offset = 0;
     if (this.hasSearchButton) {
       if (resultIndex === offset) {
         const res = await this.sendSearchForm(player);
-        if (res === false || res === null) {
-          return this.sendAsync(player, page);
-        }
-        return res;
+        return res === null || res === FormClose
+          ? this.sendAsync(player, page)
+          : res;
       }
       offset += 1;
     }
@@ -206,7 +206,7 @@ export class SimpleFormEx<T> {
             default: page,
           })
           .sendAsync(player);
-        return this.sendAsync(player, res ? res.num : page);
+        return this.sendAsync(player, res === FormClose ? page : res.num);
       }
       offset += 1;
     }

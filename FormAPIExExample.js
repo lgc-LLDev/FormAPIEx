@@ -8,6 +8,7 @@ const {
   SimpleFormOperational,
   sendModalFormAsync,
   wrapAsyncFunc,
+  FormClose,
 } = require('./FormAPIEx');
 
 const PLUGIN_NAME = 'FormAPIExExample';
@@ -85,7 +86,9 @@ mc.listen('onServerStarted', () => {
       }
     */
       const res = await form.sendAsync(player);
-      player.tell(res ? JSON.stringify(res, null, 2) : String(res));
+      player.tell(
+        res === FormClose ? String(res) : JSON.stringify(res, null, 2)
+      );
     })();
 
     return true;
@@ -138,7 +141,7 @@ mc.listen('onServerStarted', () => {
           { text: '点我输出 114514', operation: () => player.tell('114514') },
         ]
       );
-      await form.sendAsync(player); // 返回值是执行后函数的返回值
+      await form.sendAsync(player); // 返回值是执行后函数的返回值，或者 FormClose
     })();
 
     return true;

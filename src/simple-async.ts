@@ -1,3 +1,4 @@
+import { FormClose } from './const';
 import { sendFormAsync } from './util';
 
 export interface SimpleFormAsyncOptions {
@@ -63,9 +64,9 @@ export class SimpleFormAsync {
   /**
    * 异步向玩家发送该表单
    * @param player 玩家对象
-   * @returns 玩家选择的按钮序号，玩家关闭表单或发送失败返回 null 或 undefined
+   * @returns 玩家选择的按钮序号，玩家关闭表单或发送失败返回 FormClose
    */
-  sendAsync(player: Player): Promise<number | null | undefined> {
+  sendAsync(player: Player): Promise<number | FormClose> {
     const form = mc
       .newSimpleForm()
       .setTitle(this.title)
