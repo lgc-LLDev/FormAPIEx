@@ -4,8 +4,6 @@
 
 让处理表单返回值变得更容易！
 
-需要已编译好的版本？去看看 [Releases](https://github.com/lgc-LLSEDev/FormAPIEx/releases) 吧！
-
 ## 介绍
 
 本工具库提供了一些类以及函数，可以让各位更方便地处理表单返回值，不用再为需要自己处理表单按钮的 ID 而烦恼了！  
@@ -20,13 +18,53 @@
 
 ## 引用
 
-### QuickJS
+<details open>
+<summary>LL3 用法</summary>
+
+### LL3 - QuickJS
+
+- 将本仓库作为 Lip 包安装到 BDS 的插件目录：
+
+  ```bash
+  lip install github.com/lgc-LLDev/FormAPIEx
+  ```
+
+  或者作为你插件的依赖：
+
+  ```jsonc
+  // tooth.json
+  {
+    // ...
+    "dependencies": {
+      "github.com/lgc-LLDev/FormAPIEx": ">0.0.0" // 自行修改依赖版本
+      // ...
+    }
+    // ...
+  }
+  ```
+
+- 之后使用 `require` 导入（没有试过能不能用 ES6 语法，可以自行尝试）：
+
+  ```js
+  // 可以接着导入其他本库已经导出的函数，类等
+  const { CustomFormEx } = require('./FormAPIEx');
+  ```
+
+### LL3 - Rollup
+
+参见下方 `LL2 - NodeJS` 的用法
+
+</details>
+
+<details>
+<summary>LL2 用法</summary>
+
+### LL2 - QuickJS
 
 - 将编译好的 `FormAPIEx.js` 扔进 BDS 目录的 `plugins/lib` 文件夹中，之后使用下面的代码来导入
 
   ```js
-  // 可以接着导入其他本库已经导出的函数，类等
-  const { CustomFormEx } = require('./lib/FormAPIEx');
+
   ```
 
   如果你使用的是 TypeScript，那么我更推荐你使用模块语法导入
@@ -36,33 +74,35 @@
   import { CustomFormEx } from './lib/FormAPIEx';
   ```
 
-### NodeJS
+### LL2 - NodeJS
 
-- 引用 `form-api-ex` npm 包
+#### 引用 `form-api-ex` npm 包
 
-  - 先将本包加入你项目的依赖项中
+- 先将本包加入你项目的依赖项中
 
-    推荐使用 `pnpm` 管理项目依赖  
-    下面的命令假设你已经安装了 `pnpm`，如果你没有安装，可以往上翻翻看看如何安装，也可以换用其他包管理器  
-    使用下面的命令将本包添加到你项目的依赖项中
+  推荐使用 `pnpm` 管理项目依赖  
+  下面的命令假设你已经安装了 `pnpm`，如果你没有安装，可以往上翻翻看看如何安装，也可以换用其他包管理器  
+  使用下面的命令将本包添加到你项目的依赖项中
 
-    ```bash
-    pnpm i form-api-ex
-    ```
+  ```bash
+  pnpm i form-api-ex
+  ```
 
-  - 然后使用下面的语法导入
+- 然后使用下面的语法导入
 
-    ```js
-    // 可以接着导入其他本库已经导出的函数，类等
-    const { CustomFormEx } = require('form-api-ex');
-    ```
+  ```js
+  // 可以接着导入其他本库已经导出的函数，类等
+  const { CustomFormEx } = require('form-api-ex');
+  ```
 
-    如果你使用的是 TypeScript，那么我更推荐你使用模块语法导入
+  如果你使用的是 TypeScript，那么我更推荐你使用模块语法导入
 
-    ```ts
-    // 可以接着导入其他本库已经导出的函数，类，接口等
-    import { CustomFormEx } from 'form-api-ex';
-    ```
+  ```ts
+  // 可以接着导入其他本库已经导出的函数，类，接口等
+  import { CustomFormEx } from 'form-api-ex';
+  ```
+
+</details>
 
 ## 联系我
 
