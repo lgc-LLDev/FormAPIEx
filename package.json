@@ -1,6 +1,6 @@
 {
   "name": "form-api-ex",
-  "version": "0.4.0",
+  "version": "0.4.1",
   "description": "Work with LLSE forms easily!",
   "main": "lib/FormAPIEx.cjs",
   "module": "lib/FormAPIEx.mjs",

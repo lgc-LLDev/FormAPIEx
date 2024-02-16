@@ -124,6 +124,10 @@ QQ：3076823485
 
 ## 更新日志
 
+### 0.4.1
+
+- 修复 `SimpleFormEx` 的默认 `searcher` 的一些问题
+
 ### 0.4.0
 
 - 新增 `SimpleFormOperational` 类

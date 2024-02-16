@@ -54,12 +54,15 @@ export class SimpleFormEx<T> {
     buttons,
     param
   ): T[] => {
-    const params = param.split(/\s/g);
-    const formatted = this.formatButtons(buttons).map((v) => v[0]);
+    const params = param.toLowerCase().split(/\s/g);
+    const formatted = this.formatButtons(buttons).map((v) =>
+      v[0].toLowerCase()
+    );
     const result: T[] = [];
     formatted.forEach((v, i) => {
       for (const wd of params) {
-        if (v.includes(wd)) result.push(buttons[i]);
+        const btn = buttons[i];
+        if (v.includes(wd) && !result.includes(btn)) result.push(btn);
       }
     });
     return result;
