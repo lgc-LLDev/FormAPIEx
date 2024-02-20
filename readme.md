@@ -124,6 +124,11 @@ QQ：3076823485
 
 ## 更新日志
 
+### 0.5.2
+
+- 修改 `SimpleFormEx` 的默认 `searcher` 使搜索结果按权重排列
+- 修改 `formatError` 函数使其显示错误信息
+
 ### 0.5.1
 
 - 修复 `SimpleFormOperational` 的 `title` 与 `content` 不生效的 Bug

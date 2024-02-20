@@ -59,14 +59,15 @@ export class SimpleFormEx<T> {
     const formatted = this.formatButtons(buttons).map((v) =>
       v[0].toLowerCase()
     );
-    const result: T[] = [];
-    formatted.forEach((v, i) => {
-      for (const wd of params) {
-        const btn = buttons[i];
-        if (v.includes(wd) && !result.includes(btn)) result.push(btn);
-      }
-    });
-    return result;
+    const result: [number, T][] = [];
+    for (const it of formatted) {
+      const score = params.reduce(
+        (acc, cur) => acc + (it.includes(cur) ? 1 : 0),
+        0
+      );
+      if (score) result.push([score, buttons[formatted.indexOf(it)]]);
+    }
+    return result.sort(([a], [b]) => b - a).map((v) => v[1]);
   };
 
   /**

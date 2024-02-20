@@ -6,9 +6,7 @@ import { FormClose } from './const';
  * @returns 格式化后的错误
  */
 export function formatError(e: unknown): string {
-  let msg = e;
-  if (e instanceof Error) msg = e.stack || e.message;
-  return String(msg);
+  return e instanceof Error ? `${e.message}\n${e.stack}` : String(e);
 }
 
 /**
