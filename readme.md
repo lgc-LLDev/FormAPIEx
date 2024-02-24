@@ -14,7 +14,7 @@
 
 ## 示例
 
-见 [FormAPIExample.js](https://github.com/lgc-LLSEDev/FormAPIEx/blob/master/FormAPIExample.js)
+见 [FormAPIExample.js](https://github.com/lgc-LLDev/FormAPIEx/blob/master/FormAPIExample.js)
 
 ## 引用
 
