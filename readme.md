@@ -64,7 +64,8 @@
 - 将编译好的 `FormAPIEx.js` 扔进 BDS 目录的 `plugins/lib` 文件夹中，之后使用下面的代码来导入
 
   ```js
-
+  // 可以接着导入其他本库已经导出的函数，类等
+  const { CustomFormEx } = require('./lib/FormAPIEx');
   ```
 
   如果你使用的是 TypeScript，那么我更推荐你使用模块语法导入
