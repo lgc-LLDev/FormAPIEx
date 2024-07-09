@@ -23,12 +23,12 @@
   ],
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/lgc-LLSEDev/FormAPIEx.git"
+    "url": "git+https://github.com/lgc-LLDev/FormAPIEx.git"
   },
   "bugs": {
-    "url": "https://github.com/lgc-LLSEDev/FormAPIEx/issues"
+    "url": "https://github.com/lgc-LLDev/FormAPIEx/issues"
   },
-  "homepage": "https://github.com/lgc-LLSEDev/FormAPIEx/FormAPIEx",
+  "homepage": "https://github.com/lgc-LLDev/FormAPIEx/FormAPIEx",
   "devDependencies": {
     "@rollup/plugin-json": "^6.1.0",
     "@rollup/plugin-typescript": "^11.1.6",
