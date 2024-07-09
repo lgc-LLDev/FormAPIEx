@@ -1,4 +1,4 @@
-import { FormClose } from './const';
+import { FormClose } from './const'
 
 /**
  * 格式化错误堆栈
@@ -6,7 +6,7 @@ import { FormClose } from './const';
  * @returns 格式化后的错误
  */
 export function formatError(e: unknown): string {
-  return e instanceof Error ? `${e.message}\n${e.stack}` : String(e);
+  return e instanceof Error ? `${e.message}\n${e.stack}` : String(e)
 }
 
 /**
@@ -15,14 +15,11 @@ export function formatError(e: unknown): string {
  * @returns wrapped sync function
  */
 export function wrapAsyncFunc<T extends unknown[]>(
-  func: (...args: T) => Promise<unknown>
+  func: (...args: T) => Promise<unknown>,
 ): (...args: T) => void {
   return (...args: T) => {
-    setTimeout(
-      () => func(...args).catch((e) => logger.error(formatError(e))),
-      0
-    );
-  };
+    setTimeout(() => func(...args).catch((e) => logger.error(formatError(e))), 0)
+  }
 }
 
 /**
@@ -31,7 +28,7 @@ export function wrapAsyncFunc<T extends unknown[]>(
  * @returns 复制后对象
  */
 export function deepClone<T>(obj: T): T {
-  return JSON.parse(JSON.stringify(obj));
+  return JSON.parse(JSON.stringify(obj))
 }
 
 /**
@@ -42,22 +39,22 @@ export function deepClone<T>(obj: T): T {
  */
 export function sendFormAsync(
   player: Player,
-  form: SimpleForm
-): Promise<number | FormClose>;
+  form: SimpleForm,
+): Promise<number | FormClose>
 export function sendFormAsync(
   player: Player,
-  form: CustomForm
-): Promise<(string | boolean | number)[] | FormClose>;
+  form: CustomForm,
+): Promise<(string | boolean | number)[] | FormClose>
 export function sendFormAsync(
   player: Player,
-  form: SimpleForm | CustomForm
+  form: SimpleForm | CustomForm,
 ): Promise<number | (string | boolean | number)[] | FormClose> {
   return new Promise((resolve) => {
     player.sendForm(form, (_, data) =>
       setTimeout(
         () => resolve(data === null || data === undefined ? FormClose : data),
-        0
-      )
-    );
-  });
+        0,
+      ),
+    )
+  })
 }

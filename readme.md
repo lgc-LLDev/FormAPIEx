@@ -36,9 +36,9 @@
   {
     // ...
     "dependencies": {
-      "github.com/lgc-LLDev/FormAPIEx": ">0.0.0" // 自行修改依赖版本
+      "github.com/lgc-LLDev/FormAPIEx": ">0.0.0", // 自行修改依赖版本
       // ...
-    }
+    },
     // ...
   }
   ```
@@ -47,7 +47,7 @@
 
   ```js
   // 可以接着导入其他本库已经导出的函数，类等
-  const { CustomFormEx } = require('./FormAPIEx');
+  const { CustomFormEx } = require('./FormAPIEx')
   ```
 
 ### LL3 - Rollup
@@ -65,14 +65,14 @@
 
   ```js
   // 可以接着导入其他本库已经导出的函数，类等
-  const { CustomFormEx } = require('./lib/FormAPIEx');
+  const { CustomFormEx } = require('./lib/FormAPIEx')
   ```
 
   如果你使用的是 TypeScript，那么我更推荐你使用模块语法导入
 
   ```ts
   // 可以接着导入其他本库已经导出的函数，类，接口等
-  import { CustomFormEx } from './lib/FormAPIEx';
+  import { CustomFormEx } from './lib/FormAPIEx'
   ```
 
 ### LL2 - NodeJS
@@ -93,14 +93,14 @@
 
   ```js
   // 可以接着导入其他本库已经导出的函数，类等
-  const { CustomFormEx } = require('form-api-ex');
+  const { CustomFormEx } = require('form-api-ex')
   ```
 
   如果你使用的是 TypeScript，那么我更推荐你使用模块语法导入
 
   ```ts
   // 可以接着导入其他本库已经导出的函数，类，接口等
-  import { CustomFormEx } from 'form-api-ex';
+  import { CustomFormEx } from 'form-api-ex'
   ```
 
 </details>

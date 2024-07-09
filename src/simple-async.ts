@@ -1,33 +1,33 @@
-import { FormClose } from './const';
-import { sendFormAsync } from './util';
+import { FormClose } from './const'
+import { sendFormAsync } from './util'
 
 export interface SimpleFormAsyncOptions {
   /** 表单标题 */
-  title?: string;
+  title?: string
   /** 表单内容 */
-  content?: string;
+  content?: string
   /** 表单按钮 */
-  buttons?: [string, string?][];
+  buttons?: [string, string?][]
 }
 
 export class SimpleFormAsync {
   /** 表单标题 */
-  public title = '';
+  public title = ''
 
   /** 表单内容 */
-  public content = '';
+  public content = ''
 
   /** 表单按钮 `[ text, image ]` */
-  public buttons: [string, string?][] = [];
+  public buttons: [string, string?][] = []
 
   /**
    * @param options 附加选项
    */
   constructor(options: SimpleFormAsyncOptions = {}) {
-    const { title, content, buttons } = options;
-    if (title) this.title = title;
-    if (content) this.content = content;
-    if (buttons) this.buttons = buttons;
+    const { title, content, buttons } = options
+    if (title) this.title = title
+    if (content) this.content = content
+    if (buttons) this.buttons = buttons
   }
 
   /**
@@ -36,8 +36,8 @@ export class SimpleFormAsync {
    * @returns 自身，便于链式调用
    */
   setTitle(val: string) {
-    this.title = val;
-    return this;
+    this.title = val
+    return this
   }
 
   /**
@@ -46,8 +46,8 @@ export class SimpleFormAsync {
    * @returns 自身，便于链式调用
    */
   setContent(val: string) {
-    this.content = val;
-    return this;
+    this.content = val
+    return this
   }
 
   /**
@@ -57,8 +57,8 @@ export class SimpleFormAsync {
    * @returns 自身，便于链式调用
    */
   addButton(text: string, image?: string) {
-    this.buttons.push([text, image]);
-    return this;
+    this.buttons.push([text, image])
+    return this
   }
 
   /**
@@ -67,14 +67,11 @@ export class SimpleFormAsync {
    * @returns 玩家选择的按钮序号，玩家关闭表单或发送失败返回 FormClose
    */
   sendAsync(player: Player): Promise<number | FormClose> {
-    const form = mc
-      .newSimpleForm()
-      .setTitle(this.title)
-      .setContent(this.content);
+    const form = mc.newSimpleForm().setTitle(this.title).setContent(this.content)
     this.buttons.forEach(([text, image]) => {
-      if (image) form.addButton(text, image);
-      else form.addButton(text);
-    });
-    return sendFormAsync(player, form);
+      if (image) form.addButton(text, image)
+      else form.addButton(text)
+    })
+    return sendFormAsync(player, form)
   }
 }

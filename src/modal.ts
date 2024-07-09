@@ -12,16 +12,12 @@ export function sendModalFormAsync(
   title: string,
   content: string,
   confirmButton = '§a确认',
-  cancelButton = '§c取消'
+  cancelButton = '§c取消',
 ): Promise<boolean> {
   // 不知道怎么回事按取消会返回 null / undefined，干脆直接转 boolean
   return new Promise((resolve) => {
-    player.sendModalForm(
-      title,
-      content,
-      confirmButton,
-      cancelButton,
-      (_, data) => setTimeout(() => resolve(!!data), 0)
-    );
-  });
+    player.sendModalForm(title, content, confirmButton, cancelButton, (_, data) =>
+      setTimeout(() => resolve(!!data), 0),
+    )
+  })
 }
