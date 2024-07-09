@@ -1,12 +1,8 @@
 {
-  "extends": "../tsconfig.template.json",
-  "exclude": ["./lib/**", "./example.js"],
+  "extends": "../tsconfig.esbuild.json",
+  "include": ["src"],
   "compilerOptions": {
-    "outDir": "./lib",
-    "rootDir": ".",
-    "noEmit": true,
-    "resolveJsonModule": true,
-    "declaration": true,
-    "removeComments": false
+    "rootDir": "src",
+    "outFile": "lib/FormAPIEx.d.ts"
   }
 }

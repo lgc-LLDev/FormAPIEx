@@ -2,6 +2,7 @@
   "name": "form-api-ex",
   "version": "0.5.2",
   "description": "Work with LLSE forms easily!",
+  "type": "module",
   "main": "lib/FormAPIEx.cjs",
   "module": "lib/FormAPIEx.mjs",
   "types": "lib/FormAPIEx.d.ts",
@@ -15,8 +16,12 @@
     "ll"
   ],
   "scripts": {
-    "build": "rollup -c && rimraf ./lib/src",
-    "watch": "rollup -c --watch"
+    "build:dts": "dtsc",
+    "build:cjs": "esbuild src/index.ts --bundle --format=cjs --outfile=lib/FormAPIEx.cjs",
+    "build:esm": "esbuild src/index.ts --bundle --format=esm --outfile=lib/FormAPIEx.mjs",
+    "build:post": "node -e \"require('fs').renameSync('./lib/index.d.ts', './lib/FormAPIEx.d.ts')\"",
+    "build": "pnpm build:dts && pnpm build:cjs && pnpm build:esm && pnpm build:post",
+    "clean": "rimraf ./lib"
   },
   "files": [
     "lib/FormAPIEx.*"
@@ -30,12 +35,9 @@
   },
   "homepage": "https://github.com/lgc-LLDev/FormAPIEx",
   "devDependencies": {
-    "@rollup/plugin-json": "^6.1.0",
-    "@rollup/plugin-typescript": "^11.1.6",
-    "rollup": "^4.12.0",
-    "rollup-plugin-dts": "^6.1.0",
-    "tslib": "^2.6.2",
-    "typescript": "^5.3.3",
-    "rimraf": "^5.0.5"
+    "dtsc": "^3.0.4",
+    "esbuild": "^0.23.0",
+    "rimraf": "^6.0.0",
+    "typescript": "^5.3.3"
   }
 }
