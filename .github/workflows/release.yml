@@ -43,25 +43,26 @@ jobs:
       - name: Install Node dependencies
         run: yarn
 
-      - name: Build
+      - name: Build and copy dist files to temp folder
         run: |-
-          # cd plugins/${FOLDER_NAME}
           yarn build
+          cd plugins/${FOLDER_NAME}
+          tsx scripts/copy-tooth-files.ts
 
-      - name: Copy dist to temp folder
+      - name: Get tooth version
         run: |-
-          mkdir -p temp
-          cp -r plugins/${FOLDER_NAME}/dist temp/ || true
-          cp -r plugins/${FOLDER_NAME}/lib temp/ || true
-          cp -r plugins/${FOLDER_NAME}/manifest.json temp/ || true
-          cp -r plugins/${FOLDER_NAME}/tooth.json temp/ || true
+          cd plugins/${FOLDER_NAME}
+          TOOTH_VERSION=$(tsx scripts/read-version.ts)
+          echo "TOOTH_VERSION=${TOOTH_VERSION}"
+          echo "TOOTH_VERSION=${TOOTH_VERSION}" >> $GITHUB_ENV
 
       - name: Deploy
         uses: lgc2333/git-publish-subdir-action@develop
         env:
           REPO: self
-          BRANCH: dist
-          FOLDER: temp
+          BRANCH: tooth-dist
+          FOLDER: github-release-tmp
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
           MESSAGE: 'upload dist [skip-ci]'
           # SQUASH_HISTORY: true
+          TAG: v${{ env.TOOTH_VERSION }}
