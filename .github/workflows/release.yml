@@ -61,7 +61,7 @@ jobs:
         env:
           REPO: self
           BRANCH: dist
-          FOLDER: packages/${{ env.FOLDER_NAME }}
+          FOLDER: plugins/${{ env.FOLDER_NAME }}
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
           MESSAGE: 'upload dist [skip-ci]'
           # SQUASH_HISTORY: true
