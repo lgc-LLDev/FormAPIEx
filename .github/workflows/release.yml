@@ -46,8 +46,7 @@ jobs:
       - name: Build and copy dist files to temp folder
         run: |-
           yarn build
-          cd plugins/${FOLDER_NAME}
-          yarn tsx scripts/copy-tooth-files.ts
+          yarn tsx scripts/copy-tooth-files.ts ${FOLDER_NAME}
 
       - name: Deploy
         uses: lgc2333/git-publish-subdir-action@develop
@@ -62,7 +61,7 @@ jobs:
       - name: Get tooth version
         run: |-
           cd plugins/${FOLDER_NAME}
-          TOOTH_VERSION=$(yarn tsx scripts/read-version.ts)
+          TOOTH_VERSION=$(yarn tsx scripts/read-version.ts ${FOLDER_NAME})
           echo "TOOTH_VERSION=${TOOTH_VERSION}"
           echo "TOOTH_VERSION=${TOOTH_VERSION}" >> $GITHUB_ENV
 
