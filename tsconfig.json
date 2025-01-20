@@ -1,8 +1,9 @@
 {
-  "extends": "../tsconfig.esbuild.json",
+  "extends": "../../tsconfig.base",
   "include": ["src"],
   "compilerOptions": {
     "rootDir": "src",
-    "outFile": "lib/FormAPIEx.d.ts"
+    "outFile": "lib/FormAPIEx.d.ts",
+    "types": ["levi-lamina-lse"]
   }
 }

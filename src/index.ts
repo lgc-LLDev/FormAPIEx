@@ -1,6 +1,3 @@
-// LiteLoaderScript Dev Helper
-/// <reference path="../../HelperLib/src/index.d.ts"/>
-
 export * from './const'
 export * from './custom-ex'
 export * from './modal'

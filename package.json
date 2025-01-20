@@ -20,8 +20,8 @@
     "build:cjs": "esbuild src/index.ts --bundle --format=cjs --outfile=lib/FormAPIEx.cjs",
     "build:esm": "esbuild src/index.ts --bundle --format=esm --outfile=lib/FormAPIEx.mjs",
     "build:post": "node -e \"require('fs').renameSync('./lib/index.d.ts', './lib/FormAPIEx.d.ts')\"",
-    "build": "pnpm build:dts && pnpm build:cjs && pnpm build:esm && pnpm build:post",
-    "clean": "rimraf ./lib"
+    "build": "yarn build:dts && yarn build:cjs && yarn build:esm && yarn build:post",
+    "clean": "rimraf ./lib && rimraf tsconfig.tsbuildinfo"
   },
   "files": [
     "lib/FormAPIEx.*"
@@ -36,8 +36,8 @@
   "homepage": "https://github.com/lgc-LLDev/FormAPIEx",
   "devDependencies": {
     "dtsc": "^3.0.4",
-    "esbuild": "^0.23.0",
-    "rimraf": "^6.0.0",
-    "typescript": "^5.3.3"
+    "esbuild": "^0.24.2",
+    "rimraf": "^6.0.1",
+    "typescript": "^5.7.3"
   }
 }
