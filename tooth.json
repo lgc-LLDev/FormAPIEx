@@ -2,12 +2,16 @@
   "$schema": "https://raw.githubusercontent.com/lippkg/lip/main/schemas/tooth.v2.schema.json",
   "format_version": 2,
   "tooth": "github.com/lgc-LLDev/FormAPIEx",
-  "version": "0.5.1",
+  "version": "0.5.2",
   "info": {
     "name": "FormAPIEx",
     "description": "Work with LSE forms easily!",
     "author": "student_2333",
     "tags": ["library", "lse", "quickjs", "form"]
+  },
+  "dependencies": {
+    "github.com/LiteLDev/LeviLamina": ">=0.x",
+    "gitea.litebds.com/LiteLDev/legacy-script-engine-quickjs": ">=0.x"
   },
   "files": {
     "place": [

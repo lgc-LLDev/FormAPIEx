@@ -47,14 +47,7 @@ jobs:
         run: |-
           yarn build
           cd plugins/${FOLDER_NAME}
-          tsx scripts/copy-tooth-files.ts
-
-      - name: Get tooth version
-        run: |-
-          cd plugins/${FOLDER_NAME}
-          TOOTH_VERSION=$(tsx scripts/read-version.ts)
-          echo "TOOTH_VERSION=${TOOTH_VERSION}"
-          echo "TOOTH_VERSION=${TOOTH_VERSION}" >> $GITHUB_ENV
+          yarn tsx scripts/copy-tooth-files.ts
 
       - name: Deploy
         uses: lgc2333/git-publish-subdir-action@develop
@@ -65,4 +58,18 @@ jobs:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
           MESSAGE: 'upload dist [skip-ci]'
           # SQUASH_HISTORY: true
-          TAG: v${{ env.TOOTH_VERSION }}
+
+      - name: Get tooth version
+        run: |-
+          cd plugins/${FOLDER_NAME}
+          TOOTH_VERSION=$(yarn tsx scripts/read-version.ts)
+          echo "TOOTH_VERSION=${TOOTH_VERSION}"
+          echo "TOOTH_VERSION=${TOOTH_VERSION}" >> $GITHUB_ENV
+
+      - name: Release
+        uses: softprops/action-gh-release@v2
+        with:
+          tag_name: v${{ env.TOOTH_VERSION }}
+          target_commitish: tooth-dist
+          make_latest: true
+          body: v${{ env.TOOTH_VERSION }}
