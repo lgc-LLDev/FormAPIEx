@@ -6,7 +6,7 @@
   "info": {
     "name": "FormAPIEx",
     "description": "Work with LSE forms easily!",
-    "author": "student_2333",
+    "author": "LgCookie",
     "tags": ["library", "lse", "quickjs", "form"]
   },
   "dependencies": {
