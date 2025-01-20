@@ -53,8 +53,8 @@ jobs:
           mkdir -p temp
           cp -r plugins/${FOLDER_NAME}/dist temp/ || true
           cp -r plugins/${FOLDER_NAME}/lib temp/ || true
-          cp -r plugins/${FOLDER_NAME}/manifest.json temp/
-          cp -r plugins/${FOLDER_NAME}/tooth.json temp/
+          cp -r plugins/${FOLDER_NAME}/manifest.json temp/ || true
+          cp -r plugins/${FOLDER_NAME}/tooth.json temp/ || true
 
       - name: Deploy
         uses: lgc2333/git-publish-subdir-action@develop
