@@ -28,7 +28,7 @@ jobs:
 
       - name: Checkout current package submodule at specific commit
         run: |-
-          cd packages/${FOLDER_NAME}
+          cd plugins/${FOLDER_NAME}
           git checkout ${{ github.sha }}
 
       - uses: actions/setup-node@v4
@@ -45,7 +45,7 @@ jobs:
 
       - name: Build
         run: |-
-          cd plugins/${FOLDER_NAME}
+          # cd plugins/${FOLDER_NAME}
           yarn build
 
       - name: Copy dist to temp folder
