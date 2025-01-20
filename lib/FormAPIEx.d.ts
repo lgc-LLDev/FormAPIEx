@@ -1,6 +1,6 @@
 export const NAME = "FormAPIEx";
 export const VERSION: [number, number, number];
-export const AUTHOR = "student_2333 <lgc2333@126.com>";
+export const AUTHOR = "LgCookie <lgc2333@126.com>";
 export const LICENSE = "Apache-2.0";
 export const FormClose: unique symbol;
 export type FormClose = typeof FormClose;

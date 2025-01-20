@@ -7,7 +7,7 @@
   "module": "lib/FormAPIEx.mjs",
   "types": "lib/FormAPIEx.d.ts",
   "license": "Apache-2.0",
-  "author": "student_2333 <lgc2333@126.com>",
+  "author": "LgCookie <lgc2333@126.com>",
   "keywords": [
     "liteloader",
     "liteloaderbds",
