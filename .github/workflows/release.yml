@@ -60,7 +60,6 @@ jobs:
 
       - name: Get tooth version
         run: |-
-          cd plugins/${FOLDER_NAME}
           TOOTH_VERSION=$(yarn tsx scripts/read-version.ts ${FOLDER_NAME})
           echo "TOOTH_VERSION=${TOOTH_VERSION}"
           echo "TOOTH_VERSION=${TOOTH_VERSION}" >> $GITHUB_ENV
@@ -71,4 +70,4 @@ jobs:
           tag_name: v${{ env.TOOTH_VERSION }}
           target_commitish: tooth-dist
           make_latest: true
-          body: v${{ env.TOOTH_VERSION }}
+          body: Release v${{ env.TOOTH_VERSION }}
