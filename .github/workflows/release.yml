@@ -51,8 +51,8 @@ jobs:
       - name: Copy dist to temp folder
         run: |-
           mkdir -p temp
-          cp -r plugins/${FOLDER_NAME}/dist temp/
-          cp -r plugins/${FOLDER_NAME}/lib temp/
+          cp -r plugins/${FOLDER_NAME}/dist temp/ || true
+          cp -r plugins/${FOLDER_NAME}/lib temp/ || true
           cp -r plugins/${FOLDER_NAME}/manifest.json temp/
           cp -r plugins/${FOLDER_NAME}/tooth.json temp/
 
